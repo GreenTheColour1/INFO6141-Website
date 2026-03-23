@@ -1,0 +1,63 @@
+package views
+
+import "github.com/GreenTheColour1/go-blog/views/modules"
+import "github.com/GreenTheColour1/go-blog/views/components/dialog"
+
+templ ThemeSwitcherScript() {
+	{{ handle := templ.NewOnceHandle() }}
+	@handle.Once() {
+		<script nonce={ templ.GetNonce(ctx) }>
+			// Default to dark if no theme preferance is present
+			if (localStorage.getItem('appTheme') == null) {
+				localStorage.setItem('appTheme', 'dark')
+			}
+
+			// Initial theme setup
+			document.documentElement.classList.toggle('dark', localStorage.getItem('appTheme') === 'dark');
+
+			document.addEventListener('alpine:init', () => {
+				Alpine.data('themeHandler', () => ({
+					isDark: localStorage.getItem('appTheme') === 'dark',
+					themeClasses() {
+						return this.isDark ? 'text-white' : 'bg-white text-black'
+					},
+					toggleTheme() {
+						this.isDark = !this.isDark;
+						localStorage.setItem('appTheme', this.isDark ? 'dark' : 'light');
+						document.documentElement.classList.toggle('dark', this.isDark);
+					}
+				}))
+			})
+		</script>
+	}
+}
+
+templ base() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<!-- Tailwind CSS (output) -->
+			<link href={ templ.SafeURL("/assets/css/output.css") } rel="stylesheet"/>
+			<!-- Alpine.js -->
+			<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+			@dialog.Script()
+			<!-- Data -->
+			<script defer src="https://umami.camerongreen.ca/script.js" data-website-id="a3d0c197-d382-468f-ab1e-13785156ae88"></script>
+			<!-- Theme switcher script -->
+			@ThemeSwitcherScript()
+		</head>
+		<body x-data="themeHandler" x-bind:class="themeClasses">
+			<div class="max-w-screen-lg mx-auto px-4 md:px-0">
+				@modules.Navbar()
+				{ children... }
+			</div>
+			<footer class="max-w-screen-lg mx-auto mt-8 pt-2 border-t">
+				<aside>
+					<p>© 2025 Cameron Green</p>
+				</aside>
+			</footer>
+		</body>
+	</html>
+}

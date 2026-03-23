@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  blog:
+    image: go-blog:wzkspf00s720gl94v42wjd8hgw6assll
+    restart: unless-stopped
+    container_name: go-blog
+    ports:
+      - 8042:8080
+    environment:
+      DATABASE_URL: postgresql://blog:blog@db:5432/blog
+
+  postgres:
+    image: postgres:bookworm
+    restart: unless-stopped
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blog
+      POSTGRES_DB: blog
+
+volumes:
+  pg-data:
