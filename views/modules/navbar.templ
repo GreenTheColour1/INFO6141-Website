@@ -1,14 +1,13 @@
 package modules
 
 import "github.com/GreenTheColour1/go-blog/views/components/icon"
-import "github.com/GreenTheColour1/go-blog/views/components/separator"
 import "github.com/GreenTheColour1/go-blog/views/components/sheet"
 import "github.com/GreenTheColour1/go-blog/views/components/button"
 
 templ Navbar() {
 	<nav class="border-b py-3 mb-4">
 		<div class="flex justify-between items-center md:hidden">
-			<span class="text-xl">My Blog</span>
+			<span class="text-xl">INFO-6141 Group 2</span>
 			@sheet.Sheet(sheet.Props{Side: sheet.SideLeft}) {
 				@sheet.Trigger() {
 					@button.Button(button.Props{Variant: button.VariantGhost, Class: "flex justify-end"}) {
@@ -16,60 +15,59 @@ templ Navbar() {
 					}
 				}
 				@sheet.Content() {
-					<div class="grid grid-flow-col grid-rows-3 gap-6 px-4 pt-8">
-						<a class="flex gap-3" href="/home">
+					<div class="grid grid-flow-col grid-rows-4 gap-6 px-4 pt-8">
+						<a class="flex gap-3" href="/">
 							@icon.House(icon.Props{Class: "w-6 h-6"})
 							<span class="text-xl">HOME</span>
 						</a>
-						<a class="flex gap-3" href="/posts">
-							@icon.ScrollText(icon.Props{Class: "w-6 h-6"})
-							<span class="text-xl">POSTS</span>
+						<a class="flex gap-3" href="/fastfood">
+							@icon.Beef(icon.Props{Class: "w-6 h-6"})
+							<span class="text-xl">Fast Food</span>
 						</a>
-						//						<a class="flex gap-3" href="/resume">
-						//							@icon.FileUser(icon.Props{Class: "w-6 h-6"})
-						//							<span class="text-xl">RESUME</span>
-						//						</a>
+						<a class="flex gap-3" href="/diseases">
+							@icon.Heart(icon.Props{Class: "w-6 h-6"})
+							<span class="text-xl">Side Effects of Fast Food</span>
+						</a>
+						<a class="flex gap-3" href="/traps">
+							@icon.TriangleAlert(icon.Props{Class: "w-6 h-6"})
+							<span class="text-xl">Dietary Traps</span>
+						</a>
+						<a class="flex gap-3" href="/nutritionalvalues">
+							@icon.Apple(icon.Props{Class: "w-6 h-6"})
+							<span class="text-xl">Nutritional Values</span>
+						</a>
 					</div>
 					@sheet.Footer() {
-						<div class="flex justify-between items-center">
-							<a class="flex gap-1 px-2" data-umami-event="socials-github" href="https://github.com/GreenTheColour1/go-blog">
-								@icon.Github(icon.Props{Class: "w-6 h-6"})
-							</a>
-							<a class="flex gap-1 px-2" data-umami-event="socials-linkdin" href="https://www.linkedin.com/in/cameron-green-25b660195/">
-								@icon.Linkedin(icon.Props{Class: "w-6 h-6"})
-							</a>
-							<div class="flex justify-end">
-								@ThemeSwitcher()
-							</div>
+						<div class="flex justify-end">
+							@ThemeSwitcher()
 						</div>
 					}
 				}
 			}
 		</div>
-		<div class="hidden md:flex justify-between items-center relative">
-			<div class="flex items-center">
-				<a class="flex items-center gap-1.5 pr-3" href="/home">
-					@icon.House(icon.Props{Class: "w-6 h-6"})
-					<span class="text-xl">HOME</span>
-				</a>
-				<a class="flex items-center gap-1.5 pr-3" href="/posts">
-					@icon.ScrollText(icon.Props{Class: "w-6 h-6"})
-					<span class="text-xl">POSTS</span>
-				</a>
-				//				<a class="flex items-center gap-1.5" href="/resume">
-				//					@icon.FileUser(icon.Props{Class: "w-6 h-6"})
-				//					<span class="text-xl">RESUME</span>
-				//				</a>
-			</div>
-			<div class="container mx-auto px-4 flex justify-end">
+		<div class="hidden md:flex items-center gap-6">
+			<a class="flex items-center gap-1.5" href="/">
+				@icon.House(icon.Props{Class: "w-6 h-6"})
+				<span class="text-xl">HOME</span>
+			</a>
+			<a class="flex items-center gap-1.5" href="/fastfood">
+				@icon.Beef(icon.Props{Class: "w-6 h-6"})
+				<span class="text-xl">Fast Food</span>
+			</a>
+			<a class="flex items-center gap-1.5" href="/diseases">
+				@icon.Heart(icon.Props{Class: "w-6 h-6"})
+				<span class="text-xl">Side Effects of Fast Food</span>
+			</a>
+			<a class="flex items-center gap-1.5" href="/traps">
+				@icon.TriangleAlert(icon.Props{Class: "w-6 h-6"})
+				<span class="text-xl">Dietary Traps</span>
+			</a>
+			<a class="flex items-center gap-1.5" href="/nutritionalvalues">
+				@icon.Apple(icon.Props{Class: "w-6 h-6"})
+				<span class="text-xl">Nutritional Values</span>
+			</a>
+			<div class="ml-auto">
 				@ThemeSwitcher()
-				@separator.Separator(separator.Props{Orientation: separator.OrientationVertical, Class: "mx-4 pt-1 h-9"})
-				<a class="flex items-center gap-1 px-2" data-umami-event="socials-github" href="https://github.com/GreenTheColour1/go-blog">
-					@icon.Github(icon.Props{Class: "w-6 h-6"})
-				</a>
-				<a class="flex items-center gap-1 px-2" data-umami-event="socials-linkdin" href="https://www.linkedin.com/in/cameron-green-25b660195/">
-					@icon.Linkedin(icon.Props{Class: "w-6 h-6"})
-				</a>
 			</div>
 		</div>
 	</nav>

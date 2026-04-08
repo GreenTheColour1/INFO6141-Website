@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    templ.url = "github:a-h/templ";
+    # templ.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -11,6 +13,7 @@
       self,
       nixpkgs,
       flake-utils,
+      templ,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -27,7 +30,7 @@
             hash = "sha256-Mj1sad+cZKOTwrU6YxgS3IMQYm2BOIPpm4ssbEkE3Nw=";
           };
 
-          nativeBuildInputs = with pkgs; [ templ ];
+          nativeBuildInputs = [ pkgs.templ ];
 
           preBuild = ''
             templ generate
@@ -49,45 +52,24 @@
         devShell = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
             go
-            templ
-            postgresql
+            (templ.packages.${system}.templ)
             nodejs
             air
             overmind
             delve
             tailwindcss_4
             templui
-            go-migrate-pg
           ];
 
           shellHook = ''
-            export PGHOST=$USER
-            export PGDATA=./pgdata
-            export PGSOCKET=/tmp
-
-            export POSTGRES_USER=$USER
-            export POSTGRES_PORT=5432
-            export POSTGRES_PASSWORD=""
-            export POSTGRES_DB=postgres
             export ENVIRONMENT=dev
 
             # needed for debugging with delve
             export CGO_CFLAGS="-O2"
             export CGO_CPPFLAGS="-O2"
 
-            initdb -D $PGDATA
-            pg_ctl -D "$PGDATA" -l $PGDATA/logfile -o "-k $PGSOCKET" start
-            # psql -h localhost -U $USER
-
-            cleanup() {
-              echo "Stopping PostgreSQL server..."
-              pg_ctl -D "$PGDATA" stop
-            }
-
-            trap cleanup EXIT
-
-            CURRENT_DIR=$(pwd)
-            tmuxp load "$CURRENT_DIR"
+            #CURRENT_DIR=$(pwd)
+            #tmuxp load "$CURRENT_DIR"
           '';
         };
 

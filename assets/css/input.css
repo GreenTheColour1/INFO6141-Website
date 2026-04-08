@@ -127,4 +127,7 @@ article td {
 article a {
   @apply text-primary hover:underline;
 }
+article p {
+  @apply mb-4;
+}
 

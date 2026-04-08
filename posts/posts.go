@@ -3,7 +3,8 @@ package posts
 import (
 	"bytes"
 	"embed"
-	"time"
+	"io/fs"
+	"strings"
 
 	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/yuin/goldmark"
@@ -13,18 +14,56 @@ import (
 )
 
 type Post struct {
-	Id         [32]byte  `field:"id"`
-	Created_at time.Time `field:"created_at"`
-	Updated_at time.Time `field:"updated_at"`
-	Title      string    `field:"title"`
-	Filename   string    `field:"filename"`
-	Slug       string    `field:"slug"`
-	Body       []byte
-	RawHTML    string
+	Title    string
+	Filename string
+	Slug     string
+	Body     []byte
+	RawHTML  string
 }
 
 //go:embed files/*.md
 var PostAssets embed.FS
+
+func GetAllPosts() ([]Post, error) {
+	files, err := fs.Glob(PostAssets, "files/*.md")
+	if err != nil {
+		return nil, err
+	}
+
+	var posts []Post
+	for _, file := range files {
+		title := strings.TrimSuffix(file[6:], ".md")
+		slug := strings.ToLower(strings.ReplaceAll(title, " ", "-"))
+		posts = append(posts, Post{
+			Title:    title,
+			Filename: file,
+			Slug:     slug,
+		})
+	}
+
+	return posts, nil
+}
+
+func GetPostBySlug(slug string) (*Post, error) {
+	posts, err := GetAllPosts()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, post := range posts {
+		if post.Slug == slug {
+			body, err := PostAssets.ReadFile(post.Filename)
+			if err != nil {
+				return nil, err
+			}
+			post.Body = body
+			post.ConvertBodyToHTML()
+			return &post, nil
+		}
+	}
+
+	return nil, nil
+}
 
 func (p *Post) ConvertBodyToHTML() {
 	markdown := goldmark.New(

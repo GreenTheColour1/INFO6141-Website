@@ -1,42 +1,15 @@
 package views
 
-import (
-	"fmt"
-	"github.com/GreenTheColour1/go-blog/posts"
-)
+import "github.com/GreenTheColour1/go-blog/posts"
 
-templ Home(recentPosts []posts.Post) {
+templ Home(post *posts.Post) {
 	@base() {
-		<div class="">
-			<h1 class="text-2xl pb-4">Cameron Green</h1>
-			<h1 class="text-xl pb-4">Developer - London, Ontario, Canada</h1>
-			<div class="border rounded-xl border-grey-400 p-3">
-				<p class="">
-					Hi, I’m Cameron Green. I am a professional full-stack developer, and I enjoy sharing what I learn through both professional projects and personal tinkering. Outside of work, I spend my time managing my homelab, exploring new technologies, and keeping active through rock climbing and cycling.
-				</p>
-			</div>
-			<br/>
-			<h1 class="text-xl pb-4">Recent Articles</h1>
-			<ul class="list-disc list-inside pb-4">
-				for _, post := range recentPosts {
-					<li><a href={ templ.URL(fmt.Sprintf("post/%s", post.Slug)) }>{ fmt.Sprintf("%s - %s", post.Created_at.Format("2006-01-02"), post.Title) }</a></li>
-				}
-			</ul>
-			<h1 class="text-xl pb-4">Highlighted Projects</h1>
-			<ul class="list-disc list-inside">
-				<li>
-					<a href="https://github.com/GreenTheColour1/go-blog">My Blog</a>
-					- This is the source code for the website you're on right now!
-				</li>
-				<li>
-					<a href="https://github.com/GreenTheColour1/nixos">Nixos Config</a>
-					- My opinionated Nixos config, defines the state of all my nix machines
-				</li>
-				<li>
-					<a href="https://github.com/GreenTheColour1/greener-gbemu">Greener Gbemu</a>
-					- This is a Gameboy Emulator that is temporarily on hold while I learn more
-				</li>
-			</ul>
+		<div>
+			if post != nil {
+				<article>
+					@templ.Raw(post.RawHTML)
+				</article>
+			}
 		</div>
 	}
 }
