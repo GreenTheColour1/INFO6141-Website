@@ -1,0 +1,51 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+bin/
+tmp/
+
+# Go workspace
+go.work
+
+# Dependency directories
+vendor/
+
+# Build output
+tmp/bin/
+
+# Tailwind CSS
+assets/css/output.css
+
+# Templ generated files (optional - usually committed)
+# */*_templ.go
+# *_templ.go
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Docker
+pgdata/
+
+# Logs
+*.log
+
+# Nix
+result
+result-*
