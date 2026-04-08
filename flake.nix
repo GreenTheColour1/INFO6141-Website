@@ -81,7 +81,7 @@
 
           src = ./.;
 
-          vendorHash = "sha256-q9MUb+zhEKzDGSxJga3nxkT1iP++ckrxbsbTvW3QQhw=";
+          vendorHash = "sha256-dVZkVO6oxPnHGitnWkhsglV3VA7qldyi8LVcLBg6wkc=";
 
           nativeBuildInputs = [
             templ.packages.${system}.templ
