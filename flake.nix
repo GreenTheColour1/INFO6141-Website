@@ -92,7 +92,7 @@
         };
 
         packages.blog-image = pkgs.dockerTools.buildLayeredImage {
-          name = "go-blog";
+          name = "info6141-blog";
           config = {
             Cmd = [
               "${packages.go-blog}/bin/blog"
