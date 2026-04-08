@@ -1,24 +1,42 @@
-# IN PROGRESS
-This is currently being worked on, and when it is ready blog.camerongreen.ca will not redirect here
+# Fast Food & Nutrition Info Site
 
-This project is meant to serve a few purposes
-1. I want to learn Go 
-2. I want a place to write about tech and things I find interesting
-3. I want a to put this on my resume
+A simple Go web application that serves markdown content as HTML. Built with [templ](https://templ.guide/) for server-side rendering and Tailwind CSS for styling.
 
-I have a few design goals for this project:
-1. No using AI for writing code 
-	1. I'm not against it but I believe that if your goal is to learn then it's best to write and solve problems yourself
-2. Use markdown for writing posts
-	1. I don't want to be writing posts in HTML when converting markdown to HTML is so easy
-3. Server side rendering 
-	1. I believe that this is the correct choice for a project of this style because the front-end is quite simple, needs minimal JavaScript. This should result in the end user experience being fast and clean
+## Features
 
-Features:
-| Feature | Progress |
-| -------- | --------- |
-| PostgresDB | ✅ |
-| Routing | ✅ |
-| Markdown to HTML | ❌ |
-| Styling via Tailwind | 🚧 |
-| Dockerfile | ❌ |
+- Markdown files rendered as HTML pages
+- Server-side rendering for fast, clean performance
+- Dark/light theme support
+- Responsive design
+- No database required
+
+## Pages
+
+- **Home** - Overview of fast food consumption in Canada
+- **Fast Food** - General information about fast food
+- **Side Effects** - Health risks associated with fast food consumption
+- **Dietary Traps** - Common pitfalls in healthy eating
+- **Nutritional Values** - Calorie comparison with healthy alternatives
+
+## Development
+
+```bash
+# Enter development environment
+nix develop
+
+# Run with hot-reload
+air
+
+# Or run directly
+go run ./cmd/blog/main.go
+```
+
+Visit `http://localhost:8080` to view the site.
+
+## Tech Stack
+
+- Go
+- [templ](https://templ.guide/) - HTML templating
+- [goldmark](https://github.com/yuin/goldmark) - Markdown parsing
+- [Tailwind CSS](https://tailwindcss.com/)
+- [templui](https://templui.io/) - UI components
