@@ -30,7 +30,9 @@
             hash = "sha256-Mj1sad+cZKOTwrU6YxgS3IMQYm2BOIPpm4ssbEkE3Nw=";
           };
 
-          nativeBuildInputs = [ pkgs.templ ];
+          nativeBuildInputs = [
+            templ.packages.${system}.templ
+          ];
 
           preBuild = ''
             templ generate
@@ -81,8 +83,8 @@
 
           vendorHash = "sha256-q9MUb+zhEKzDGSxJga3nxkT1iP++ckrxbsbTvW3QQhw=";
 
-          nativeBuildInputs = with pkgs; [
-            templ
+          nativeBuildInputs = [
+            templ.packages.${system}.templ
           ];
 
           preBuild = ''
