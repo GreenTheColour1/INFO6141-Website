@@ -11,9 +11,9 @@ Fast food has become an important part of daily life in Canada, driven by conven
 ## Current Trend of Canadian Dietary Pattern
 
 <br/>
+
 According to Statistics Canada (2024), fast-food / limited-service restaurants generated **$44.8 billion** in sales in 2024, an increase of $2.3 billion compared with 2023, showing the quick-service restaurants in Canada are growing rapidly. This trend suggests that fast-food culture is economically significant and widely consumed in Canada.
 
-<br/>
 <br/>
 
 ## Significant Findings from Recent Studies
