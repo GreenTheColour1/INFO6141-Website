@@ -78,6 +78,7 @@ func (p *Post) ConvertBodyToHTML() {
 		),
 		goldmark.WithRendererOptions(
 			html.WithUnsafe(),
+			html.WithHardWraps(),
 		),
 	)
 
