@@ -1,4 +1,4 @@
-# Fast Food vs Healthy Alternatives
+By: Roshenee Murugavel
 
 <br/>
 

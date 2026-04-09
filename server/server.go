@@ -17,7 +17,7 @@ func (s *Server) Start() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		homePost, err := posts.GetPostBySlug("home")
+		homePost, err := posts.GetPostBySlug("fast-food-in-canada-an-overview")
 		if err != nil {
 			log.Printf("Error loading home post: %v", err)
 		}
@@ -25,9 +25,9 @@ func (s *Server) Start() {
 	})
 
 	mux.Handle("/fastfood", templ.Handler(views.PostBySlug("fast-food")))
-	mux.Handle("/diseases", templ.Handler(views.PostBySlug("side-effects-of-fast-food")))
+	mux.Handle("/diseases", templ.Handler(views.PostBySlug("health-risk-of-a-fast-food-diet")))
 	mux.Handle("/traps", templ.Handler(views.PostBySlug("dietary-traps")))
-	mux.Handle("/nutritionalvalues", templ.Handler(views.PostBySlug("nutritional-values")))
+	mux.Handle("/nutritionalvalues", templ.Handler(views.PostBySlug("fast-food-vs-healthy-alternatives")))
 
 	mux.HandleFunc("/post/", func(w http.ResponseWriter, r *http.Request) {
 		slug := r.PathValue("slug")

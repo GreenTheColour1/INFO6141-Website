@@ -5,6 +5,8 @@ import "github.com/GreenTheColour1/go-blog/posts"
 templ Home(post *posts.Post) {
 	@base() {
 		<div>
+			<h1 class="text-3xl">{ post.Title }</h1>
+			<p>By: Elaine Ngai</p>
 			if post != nil {
 				<article>
 					@templ.Raw(post.RawHTML)
