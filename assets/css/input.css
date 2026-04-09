@@ -127,7 +127,6 @@ article td {
 article a {
   @apply text-primary hover:underline;
 }
-article p {
-  margin-bottom: 0.5rem;
-}
+/* article p {
+} */
 

@@ -1098,9 +1098,6 @@ article a {
     }
   }
 }
-article p {
-  margin-bottom: 0.5rem;
-}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
