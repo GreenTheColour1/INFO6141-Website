@@ -1,4 +1,7 @@
+## An Overview
+
 <br/>
+
 Fast food has become an important part of daily life in Canada, driven by convenience, busy lifestyles, and the continued expansion of the food service industry.
 
 <br/>

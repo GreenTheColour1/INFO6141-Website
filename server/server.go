@@ -17,7 +17,7 @@ func (s *Server) Start() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		homePost, err := posts.GetPostBySlug("fast-food-in-canada-an-overview")
+		homePost, err := posts.GetPostBySlug("fast-food-in-canada")
 		if err != nil {
 			log.Printf("Error loading home post: %v", err)
 		}
