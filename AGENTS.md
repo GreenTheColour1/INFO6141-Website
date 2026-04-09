@@ -52,7 +52,7 @@ nix develop
 nix build
 
 # Run the Docker image
-docker load < $(nix build .#blog-image --print-out-path)/tarball/
+docker load < $(nix build .#blog-image --print-out-paths)
 ```
 
 ## Linting and Formatting

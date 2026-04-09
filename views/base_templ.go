@@ -134,7 +134,7 @@ func base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div><footer class=\"max-w-screen-lg mx-auto mt-8 pt-2 border-t\"><aside><p>© 2025 Cameron Green</p></aside></footer></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div><footer class=\"max-w-screen-lg mx-auto mt-8 pt-2 border-t\"><aside><p>Content by: Cameron Green, Roshenee Murugavel, Elaine Ngai, Anjitha Rajeswari</p></aside></footer></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
