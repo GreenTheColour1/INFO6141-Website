@@ -113,7 +113,7 @@ func Navbar() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<span class=\"text-xl\">Home</span></a> <a class=\"flex gap-3\" href=\"/diseases\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<span class=\"text-xl\">Fast Food in Canada</span></a> <a class=\"flex gap-3\" href=\"/diseases\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -191,7 +191,7 @@ func Navbar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<span class=\"text-xl\">Home</span></a> <a class=\"flex items-center gap-1.5\" href=\"/diseases\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<span class=\"text-xl\">Fast Food in Canada</span></a> <a class=\"flex items-center gap-1.5\" href=\"/diseases\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
